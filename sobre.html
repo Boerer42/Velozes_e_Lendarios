@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Guia dos Carros Mais Velozes</title>
+    
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-bg-primary: #0a0a0a;
+            --color-bg-secondary: #121212;
+            --color-bg-card: #1a1a1a;
+            --color-bg-card-hover: #222222;
+            --color-text-primary: #ffffff;
+            --color-text-secondary: #c0c0c0;
+            --color-text-muted: #888888;
+            --color-accent: #ff3c00;
+            --color-accent-hover: #ff6b3d;
+            --color-accent-glow: rgba(255, 60, 0, 0.3);
+            --color-gold: #ffd700;
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-xxl: 48px;
+            --spacing-xxxl: 64px;
+            --border-radius: 12px;
+            --border-color: #2a2a2a;
+            --transition-speed: 0.3s;
+            --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        body {
+            background: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: var(--spacing-lg);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 60, 0, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 60, 0, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 50% 100%, rgba(255, 60, 0, 0.02) 0%, transparent 30%);
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--color-bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-accent);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-accent-hover);
+        }
+
+        ::selection {
+            background: var(--color-accent);
+            color: var(--color-text-primary);
+        }
+
+        /* ===== HEADER / NAVEGAÇÃO ===== */
+        .header {
+            position: relative;
+            margin-bottom: var(--spacing-xxl);
+            padding: var(--spacing-xl) 0 var(--spacing-lg) 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .header-back {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition-speed) ease;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+        }
+
+        .header-back:hover {
+            color: var(--color-accent);
+            border-color: var(--color-accent);
+            transform: translateX(-5px);
+        }
+
+        .header-logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-text-muted);
+            letter-spacing: 2px;
+        }
+
+        .header-logo span {
+            color: var(--color-accent);
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* ===== TÍTULO PRINCIPAL ===== */
+        .topo {
+            position: relative;
+            margin-bottom: var(--spacing-xxl);
+        }
+
+        .topo .titulo {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            text-align: center;
+            padding: var(--spacing-xxl) var(--spacing-lg);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            box-shadow: 
+                0 4px 30px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--color-text-primary);
+            text-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(255, 60, 0, 0.1);
+            transition: all var(--transition-speed) ease;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Orbitron', monospace;
+        }
+
+        /* Linha de acento no título */
+        .topo .titulo::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--color-accent), var(--color-gold), var(--color-accent), transparent);
+            border-radius: 2px;
+        }
+
+        /* Efeito de brilho no título */
+        .topo .titulo::after {
+            content: '🏎️';
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            opacity: 0.2;
+            filter: grayscale(1);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .topo .titulo:hover::after {
+            opacity: 1;
+            filter: grayscale(0);
+            transform: translateY(-50%) scale(1.1) rotate(-10deg);
+        }
+
+        .topo .titulo:hover {
+            border-color: var(--color-accent);
+            box-shadow: 
+                0 4px 40px rgba(255, 60, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Subtítulo abaixo do título */
+        .topo-subtitle {
+            text-align: center;
+            color: var(--color-text-muted);
+            margin-top: var(--spacing-md);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .topo-subtitle span {
+            color: var(--color-accent);
+        }
+
+        /* ===== CONTEÚDO ===== */
+        .text {
+            color: var(--color-text-secondary);
+            font-size: 1.05rem;
+            max-width: 100%;
+            margin: var(--spacing-lg) 0;
+            padding: var(--spacing-xl);
+            background: var(--color-bg-card);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: all var(--transition-speed) ease;
+            position: relative;
+        }
+
+        .text:hover {
+            border-color: rgba(255, 60, 0, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        /* ===== TÍTULOS H3 ===== */
+        .text h3 {
+            color: var(--color-text-primary);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin: var(--spacing-xl) 0 var(--spacing-md) 0;
+            letter-spacing: 1px;
+            position: relative;
+            padding-left: var(--spacing-lg);
+            transition: all var(--transition-speed) ease;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .text h3:first-child {
+            margin-top: 0;
+        }
+
+        /* Barra decorativa nos títulos */
+        .text h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 70%;
+            background: linear-gradient(180deg, var(--color-accent), var(--color-gold));
+            border-radius: 2px;
+            box-shadow: 0 0 20px var(--color-accent-glow);
+        }
+
+        .text h3:hover {
+            color: var(--color-accent);
+            transform: translateX(5px);
+        }
+
+        /* ===== PARÁGRAFOS ===== */
+        .text p {
+            margin: var(--spacing-md) 0;
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+            transition: all var(--transition-speed) ease;
+            padding-left: var(--spacing-sm);
+            font-weight: 400;
+            font-size: 1.05rem;
+        }
+
+        .text p:hover {
+            color: var(--color-text-primary);
+        }
+
+        /* Primeiro parágrafo destaque */
+        .text p:first-of-type {
+            font-size: 1.15rem;
+            color: var(--color-text-primary);
+            border-left: 3px solid var(--color-accent);
+            padding-left: var(--spacing-lg);
+            background: linear-gradient(90deg, rgba(255, 60, 0, 0.05), transparent);
+            border-radius: 0 4px 4px 0;
+            margin-top: var(--spacing-md);
+            font-weight: 500;
+        }
+
+        /* ===== LISTA DE ITENS (Tópicos) ===== */
+        .text .topic-list {
+            list-style: none;
+            padding: 0;
+            margin: var(--spacing-md) 0;
+        }
+
+        .text .topic-list li {
+            padding: var(--spacing-md) var(--spacing-lg);
+            margin: var(--spacing-sm) 0;
+            background: rgba(255, 60, 0, 0.03);
+            border-left: 3px solid var(--color-accent);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            transition: all var(--transition-speed) ease;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+        }
+
+        .text .topic-list li:hover {
+            background: rgba(255, 60, 0, 0.08);
+            transform: translateX(5px);
+            color: var(--color-text-primary);
+        }
+
+        .text .topic-list li strong {
+            color: var(--color-text-primary);
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* ===== DESTAQUES ===== */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255, 60, 0, 0.05), rgba(255, 215, 0, 0.03));
+            border: 1px solid rgba(255, 60, 0, 0.15);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '💨';
+            position: absolute;
+            right: -10px;
+            bottom: -10px;
+            font-size: 4rem;
+            opacity: 0.05;
+            transform: rotate(-15deg);
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--color-text-primary);
+            font-weight: 500;
+        }
+
+        .highlight-box .highlight-icon {
+            display: inline-block;
+            margin-right: var(--spacing-sm);
+        }
+
+        /* ===== LINK / BOTÃO ===== */
+        .link {
+            background: var(--color-bg-card);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            margin: var(--spacing-xl) 0;
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255, 60, 0, 0.03), transparent 70%);
+            opacity: 0;
+            transition: opacity var(--transition-speed) ease;
+        }
+
+        .link:hover::before {
+            opacity: 1;
+        }
+
+        .link:hover {
+            border-color: var(--color-accent);
+            box-shadow: 0 4px 40px rgba(255, 60, 0, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .link h3 {
+            color: var(--color-text-primary);
+            font-size: 1.3rem;
+            margin-bottom: var(--spacing-md);
+            font-weight: 600;
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .link h3 span {
+            color: var(--color-accent);
+        }
+
+        .link a {
+            display: inline-block;
+            color: var(--color-text-primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--border-radius);
+            background: linear-gradient(135deg, var(--color-accent), #cc3000);
+            border: none;
+            transition: all var(--transition-speed) var(--transition-bounce);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 15px rgba(255, 60, 0, 0.3);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .link a::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity var(--transition-speed) ease;
+            pointer-events: none;
+        }
+
+        .link a:hover::before {
+            opacity: 1;
+        }
+
+        .link a:hover {
+            background: linear-gradient(135deg, var(--color-accent-hover), var(--color-accent));
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(255, 60, 0, 0.5);
+        }
+
+        .link a:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* ===== ANIMAÇÕES ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(255, 60, 0, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 30px rgba(255, 60, 0, 0.5);
+            }
+        }
+
+        .link a {
+            animation: pulse 2s infinite;
+        }
+
+        .link a:hover {
+            animation: none;
+        }
+
+        .topo .titulo,
+        .text,
+        .link {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .text {
+            animation-delay: 0.1s;
+        }
+
+        .link {
+            animation-delay: 0.2s;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            body {
+                padding: var(--spacing-md);
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: var(--spacing-sm);
+                padding: var(--spacing-md) 0;
+            }
+
+            .header-back {
+                justify-content: center;
+            }
+
+            .header-logo {
+                text-align: center;
+            }
+
+            .topo .titulo {
+                font-size: 1.8rem;
+                padding: var(--spacing-lg) var(--spacing-md);
+                letter-spacing: 1px;
+            }
+
+            .topo .titulo::after {
+                font-size: 1.5rem;
+                right: 15px;
+            }
+
+            .topo-subtitle {
+                font-size: 0.8rem;
+            }
+
+            .text {
+                padding: var(--spacing-md);
+                font-size: 0.95rem;
+            }
+
+            .text h3 {
+                font-size: 1.3rem;
+                padding-left: var(--spacing-md);
+            }
+
+            .text p:first-of-type {
+                padding-left: var(--spacing-md);
+                font-size: 1rem;
+            }
+
+            .text .topic-list li {
+                padding: var(--spacing-sm) var(--spacing-md);
+            }
+
+            .link {
+                padding: var(--spacing-md);
+            }
+
+            .link a {
+                display: block;
+                width: 100%;
+                text-align: center;
+                font-size: 1rem;
+                padding: var(--spacing-md);
+            }
+
+            .highlight-box {
+                padding: var(--spacing-md);
+            }
+
+            .highlight-box p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: var(--spacing-sm);
+            }
+
+            .topo .titulo {
+                font-size: 1.4rem;
+                padding: var(--spacing-md);
+            }
+
+            .topo .titulo::after {
+                display: none;
+            }
+
+            .text {
+                padding: var(--spacing-md);
+                font-size: 0.9rem;
+            }
+
+            .text h3 {
+                font-size: 1.1rem;
+            }
+
+            .text p {
+                font-size: 0.95rem;
+            }
+
+            .text p:first-of-type {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <a href="index.html" class="header-back">
+            ← Voltar para Home
+        </a>
+        <div class="header-logo">
+            <span>🏎️</span> VELOZES <span>&</span> LENDÁRIOS
+        </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+        <!-- ===== TÍTULO ===== -->
+        <section class="topo">
+            <h1 class="titulo">O Guia dos Carros Mais Velozes</h1>
+            <p class="topo-subtitle">
+                <span>✦</span> Onde a engenharia encontra a velocidade <span>✦</span>
+            </p>
+        </section>
+
+        <!-- ===== CONTEÚDO ===== -->
+        <div class="text">
+            <h3>🚀 Bem-vindo ao Mundo da Velocidade Máxima!</h3>
+            <p>
+                Você já parou para pensar no que acontece quando a engenharia humana desafia os limites da física? Nós sim. E a resposta é simplesmente fascinante.
+            </p>
+            <p>
+                Este site foi feito para quem tem paixão por adrenalina, design e, acima de tudo, poder. Aqui, nós não falamos apenas de carros; nós falamos de <strong>obras-primas sobre rodas</strong> que foram desenhadas para rasgar o vento e redefinir o que chamamos de "rápido".
+            </p>
+
+            <h3>🔥 Por Que a Velocidade Cativa Tanto a Gente?</h3>
+            <p>
+                Dizer que carros velozes são "legais" é quase um eufemismo. A verdade é que eles são <strong>hipnotizantes</strong>. Olha só o porquê:
+            </p>
+
+            <ul class="topic-list">
+                <li>
+                    <strong>🏁 A Sensação de Liberdade</strong>
+                    Sentar no cockpit de um hipercarro e ver o velocímetro passar dos 400 km/h não é só correr; é quase voar sem tirar os pés do chão.
+                </li>
+                <li>
+                    <strong>⚡ Pura Tecnologia</strong>
+                    Cada aerofólio, cada curva da carroceria e cada cavalo de potência no motor é o ápice da tecnologia moderna. É a ficção científica virando realidade nas pistas.
+                </li>
+                <li>
+                    <strong>🎵 O Ronco dos Motores</strong>
+                    O som de um motor V8, V12 ou até o silêncio brutal e instantâneo dos novos supercarros elétricos faz o coração acelerar na mesma hora. É pura emoção.
+                </li>
+            </ul>
+
+            <div class="highlight-box">
+                <p>
+                    <span class="highlight-icon">💨</span>
+                    "A velocidade não é apenas um número. É a expressão máxima da liberdade humana sobre rodas."
+                </p>
+            </div>
+
+            <h3>🏆 O Topo do Mundo Automotivo</h3>
+            <p>
+                De lendas como o <strong>Bugatti Chiron</strong> e o <strong>Koenigsegg Jesko</strong> a monstros elétricos como o <strong>Rimac Nevera</strong>, nós cruzamos a linha de chegada para trazer até você os detalhes mais insanos das máquinas mais rápidas do planeta.
+            </p>
+            <p>
+                <strong>Aperte os cintos</strong>, ajuste os espelhos e prepare-se. Você está prestes a entrar em uma viagem onde a velocidade não tem limites. Explore nosso conteúdo e descubra o que acontece quando o homem decide correr mais rápido que o próprio vento!
+            </p>
+        </div>
+
+        <!-- ===== LINK / CALL TO ACTION ===== -->
+        <div class="link">
+            <h3>⚡ <span>Veja a</span> Rimac Nevera</h3>
+            <a target="_blank" href="index1.html">Veja agora!</a>
+        </div>
+    </main>
+</body>
+</html>

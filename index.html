@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velozes & Lendários - O Guia dos Carros Mais Velozes</title>
+    <link rel="stylesheet" href="home.css">
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🏎️</span>
+            <span>VELOZES</span><span>&</span><span>LENDÁRIOS</span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="active">Início</a></li>
+            <li><a href="#carros">Carros</a></li>
+            <li><a href="./sobre.html">Sobre</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🔥 Edição 2026</div>
+            <h1>
+                A Velocidade<br>
+                <span class="highlight">Não Tem Limites</span>
+            </h1>
+            <p>
+                Descubra os carros mais rápidos do planeta. De Bugatti a Koenigsegg, 
+                explore o ápice da engenharia automotiva.
+            </p>
+            <div class="hero-buttons">
+                <a href="#carros" class="btn-primary">Explorar Carros</a>
+                <a href="#comparativos" class="btn-secondary">Ver Rankings</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CARROS EM DESTAQUE ===== -->
+    <section class="featured-section" id="carros">
+        <div class="section-header">
+            <h2>⚡ <span>Destaques da Semana</span></h2>
+            <p>Os bólidos que estão redefinindo o conceito de velocidade</p>
+        </div>
+
+        <div class="car-grid">
+            <!-- Card 1 -->
+            <div class="car-card">
+                <img class="car-card-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROM2UEoSBnfK4S6Dz6J-abrbk134F7Z2LobSEXIlcEnw&s=10" alt="Koenigsegg Jesko Absolut">
+                <div class="car-card-content">
+                    <span class="car-card-badge">🚀 Hipercarro</span>
+                    <h3>Koenigsegg Jesko Absolut</h3>
+                    <div class="specs">
+                        <span>⚡ 1.600 cv</span>
+                        <span>📏 0,278 Cx</span>
+                        <span>💨 500+ km/h</span>
+                    </div>
+                    <p class="description">Projetado para ultrapassar os 500 km/h. O hipercarro mais aerodinâmico da história.</p>
+                    <a href="./Koenigsegg.html" class="btn-card">Ver Detalhes →</a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="car-card">
+                <img class="car-card-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJw_EZ0fUIg_pMlDcI4zAQPd6or0P-F5rZqnT6uotIHQ&s=10" alt="Bugatti Chiron Super Sport">
+                <div class="car-card-content">
+                    <span class="car-card-badge">🏆 Lendário</span>
+                    <h3>Bugatti Chiron Super Sport</h3>
+                    <div class="specs">
+                        <span>⚡ 1.600 cv</span>
+                        <span>📏 W16 Quad-Turbo</span>
+                        <span>💨 490+ km/h</span>
+                    </div>
+                    <p class="description">O motor W16 mais potente do mundo. Luxo e velocidade em perfeita harmonia.</p>
+                    <a href="./Bugatti_Chiron.html" class="btn-card">Ver Detalhes →</a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="car-card">
+                <img class="car-card-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRIeA8MdFZOIBcP6LCBwEj_YlyENdoq1uXWP72VKmntQ&s=10" alt="Rimac Nevera">
+                <div class="car-card-content">
+                    <span class="car-card-badge">🔌 Elétrico</span>
+                    <h3>Rimac Nevera</h3>
+                    <div class="specs">
+                        <span>⚡ 1.914 cv</span>
+                        <span>📏 1.940 Nm</span>
+                        <span>💨 412 km/h</span>
+                    </div>
+                    <p class="description">O hipercarro elétrico mais rápido do mundo. 0 a 100 km/h em apenas 1.85 segundos.</p>
+                    <a href="./Rimac_Nevera.html" class="btn-card">Ver Detalhes →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ESTATÍSTICAS ===== -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="number">500+</div>
+                <div class="label">Km/h Máximos</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">1.914</div>
+                <div class="label">Cavalos de Potência</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">0.278</div>
+                <div class="label">Menor Cx do Mundo</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">1.85s</div>
+                <div class="label">0-100 km/h Mais Rápido</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CALL TO ACTION ===== -->
+    <section class="cta-section" id="contato">
+        <h2>Pronto para <span style="background: linear-gradient(135deg, var(--color-accent), var(--color-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">acelerar?</span></h2>
+        <p>
+            Junte-se a milhares de entusiastas e descubra o mundo dos carros mais velozes do planeta.
+        </p>
+        <a href="sobre.html" class="btn-primary">Conheça Nossa História</a>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="social-links">
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="YouTube">▶️</a>
+            <a href="#" aria-label="Twitter">🐦</a>
+            <a href="#" aria-label="TikTok">🎵</a>
+        </div>
+        <p>© 2026 Velozes & Lendários. Todos os direitos reservados.</p>
+        <p style="margin-top: var(--spacing-xs); font-size: 0.8rem;">
+            Feito com 💨 por apaixonados por velocidade
+        </p>
+    </footer>
+
+    <!-- ===== SCRIPT MENU MOBILE ===== -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Destacar link ativo no scroll
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+                // Manter "Início" ativo quando no topo
+                if (current === '' && link.getAttribute('href') === 'index.html') {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
